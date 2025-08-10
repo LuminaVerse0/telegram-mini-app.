@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Telegram Mini App</title>
-</head>
 <body>
-  <h1>Hello from my Telegram Mini App!</h1>
-  <p>This is inside Telegram.</p>
+  <header>
+    <h1>Meta Al Lumina NFTs</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#mint">Mint</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h2>Welcome to Luminaverse</h2>
+    <p>Mint exclusive NFTs and join our community.</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Our NFTs</h2>
+    <div class="nft-card">
+      <img src="nft1.png" alt="NFT 1" />
+      <p>Name: Lumina Genesis #1</p>
+      <p>Price: 0.05 ETH</p>
+    </div>
+    <div class="nft-card">
+      <img src="nft2.png" alt="NFT 2" />
+      <p>Name: Lumina Genesis #2</p>
+      <p>Price: 0.05 ETH</p>
+    </div>
+  </section>
+
+  <section id="mint">
+    <h2>Mint Your NFT</h2>
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <button onclick="mintNFT()">Mint NFT</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Meta Al Lumina</p>
+  </footer>
 </body>
-</html>
