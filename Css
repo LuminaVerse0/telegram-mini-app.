@@ -1,0 +1,14 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+  text-align: center;
+}
+
+.nft-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
