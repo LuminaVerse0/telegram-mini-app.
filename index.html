@@ -15,8 +15,8 @@
 
     <script>
       async function loadNFTs() {
-        // 🔹 Replace this with your actual wallet address
-        const wallet = "0x1234567890abcdef1234567890abcdef12345678";
+        // 🔹 Hardcoded wallet address
+        const wallet = "0xc15a5316B75ab200E0c24688f85ef9612D70bBd8";
         
         const response = await fetch(`/api/getNFTs?wallet=${wallet}&chain=ethereum`);
         const data = await response.json();
