@@ -1,39 +1,46 @@
-<body>
-  <header>
-    <h1>Meta Al Lumina NFTs</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#mint">Mint</a>
-    </nav>
-  </header>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kim's NFT Viewer</title>
+    <style>
+      body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+      h1 { color: #333; }
+      .nft { border: 1px solid #ccc; margin: 10px; padding: 10px; background: #fff; border-radius: 8px; }
+      img { max-width: 200px; display: block; margin-bottom: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Kim’s NFT Collection</h1>
+    <div id="nfts">Loading NFTs...</div>
 
-  <section id="home">
-    <h2>Welcome to Luminaverse</h2>
-    <p>Mint exclusive NFTs and join our community.</p>
-  </section>
+    <script>
+      async function loadNFTs() {
+        // 🔹 Replace this with your actual wallet address
+        const wallet = "0x1234567890abcdef1234567890abcdef12345678";
+        
+        const response = await fetch(`/api/getNFTs?wallet=${wallet}&chain=ethereum`);
+        const data = await response.json();
 
-  <section id="gallery">
-    <h2>Our NFTs</h2>
-    <div class="nft-card">
-      <img src="nft1.png" alt="NFT 1" />
-      <p>Name: Lumina Genesis #1</p>
-      <p>Price: 0.05 ETH</p>
-    </div>
-    <div class="nft-card">
-      <img src="nft2.png" alt="NFT 2" />
-      <p>Name: Lumina Genesis #2</p>
-      <p>Price: 0.05 ETH</p>
-    </div>
-  </section>
+        const container = document.getElementById("nfts");
+        container.innerHTML = "";
 
-  <section id="mint">
-    <h2>Mint Your NFT</h2>
-    <button onclick="connectWallet()">Connect Wallet</button>
-    <button onclick="mintNFT()">Mint NFT</button>
-  </section>
+        if (!data.data || data.data.length === 0) {
+          container.innerHTML = "<p>No NFTs found for this wallet.</p>";
+          return;
+        }
 
-  <footer>
-    <p>© 2025 Meta Al Lumina</p>
-  </footer>
-</body>
+        data.data.forEach(nft => {
+          const div = document.createElement("div");
+          div.className = "nft";
+          div.innerHTML = `
+            <img src="${nft.metadata?.image || ''}" alt="NFT">
+            <strong>${nft.metadata?.name || "Unnamed NFT"}</strong>
+            <p>${nft.metadata?.description || ""}</p>
+          `;
+          container.appendChild(div);
+        });
+      }
+      loadNFTs();
+    </script>
+  </body>
+</html>
